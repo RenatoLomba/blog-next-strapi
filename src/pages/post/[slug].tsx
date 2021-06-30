@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
+import Head from 'next/head';
 import { PostPage } from '../../containers/PostPage';
 import { PostApi } from '../../data/PostsApi';
 import { IPost } from '../../models/IPost';
@@ -10,7 +11,14 @@ export interface PostPageProps {
 }
 
 export default function Post({ post }: PostPageProps) {
-  return <PostPage post={post} />;
+  return (
+    <>
+      <Head>
+        <title>Blog Next - {post.title}</title>
+      </Head>
+      <PostPage post={post} />
+    </>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
