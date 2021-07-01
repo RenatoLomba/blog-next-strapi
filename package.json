@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "deploy:static": "next build && next export"
+    "deploy:static": "next build && next export",
+    "postbuild": "next-on-netlify"
   },
   "dependencies": {
     "date-fns": "^2.22.1",
     "disqus-react": "^1.1.0",
     "next": "10.2.3",
+    "next-on-netlify": "^3.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "remark": "^13.0.0",

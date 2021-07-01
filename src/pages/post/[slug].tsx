@@ -15,6 +15,7 @@ export default function Post({ post }: PostPageProps) {
     <>
       <Head>
         <title>Blog Next - {post.title}</title>
+        <meta name="description" content={`Post ${post.title}`} />
       </Head>
       <PostPage post={post} />
     </>
