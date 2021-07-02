@@ -1,6 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import React from 'react';
 import Head from 'next/head';
+import Error from 'next/error';
+import { useRouter } from 'next/router';
 import { PostPage } from '../../containers/PostPage';
 import { PostApi } from '../../data/PostsApi';
 import { IPost } from '../../models/IPost';
@@ -11,6 +13,18 @@ export interface PostPageProps {
 }
 
 export default function Post({ post }: PostPageProps) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return (
+      <div>Página em carregamento, por favor aguarde alguns instantes...</div>
+    );
+  }
+
+  if (!post) {
+    return <Error statusCode={404} />;
+  }
+
   return (
     <>
       <Head>
@@ -33,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         params: { slug: post.slug },
       };
     }),
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -41,9 +55,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const postApi = new PostApi();
   const post = await postApi.getPost(context.params.slug);
 
-  post.content = await markdownToHtml(post.content);
+  if (post) post.content = await markdownToHtml(post.content);
 
   return {
     props: { post },
+    revalidate: 600,
   };
 };

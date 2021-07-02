@@ -7,6 +7,9 @@ export class PostApi implements IPostApi {
   async getPost(slug: string | string[]): Promise<IPost> {
     const slugString = Array.isArray(slug) ? slug[0] : slug;
     const url = `${AppConfig.POSTS_URL}?slug=${slugString}`;
+
+    if (!url) return null;
+
     const posts = await getJson<IPost[]>(url);
     return posts[0];
   }

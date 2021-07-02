@@ -27,5 +27,6 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = await postApi.getPosts();
   return {
     props: { posts },
+    revalidate: 600,
   };
 };
