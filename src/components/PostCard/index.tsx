@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 
-interface PostCardProps {
+export interface PostCardProps {
   title: string;
   slug: string;
   cover: string;

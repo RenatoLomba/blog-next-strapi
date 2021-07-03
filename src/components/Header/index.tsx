@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
-import { AppConfig } from '../config/AppConfig';
+import { AppConfig } from '../../config/AppConfig';
 
 const HeaderContainer = styled.header`
   ${({ theme }) => css`

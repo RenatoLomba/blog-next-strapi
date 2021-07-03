@@ -9,7 +9,7 @@ const HeadingContainer = styled.h2`
   `}
 `;
 
-interface HeadingProps {
+export interface HeadingProps {
   title: string;
 }
 
