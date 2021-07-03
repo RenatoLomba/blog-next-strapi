@@ -2,6 +2,8 @@ import React from 'react';
 import { HomeProps } from '../pages';
 import styled from 'styled-components';
 import { PostCard } from '../components/PostCard';
+import { IPostPagination } from '../models/IPostPagination';
+import { Pagination } from '../components/Pagination';
 
 const Container = styled.div`
   display: grid;
@@ -18,9 +20,10 @@ const Category = styled.div`
 
 interface HomePageProps extends HomeProps {
   category?: string;
+  pagination?: IPostPagination;
 }
 
-export function HomePage({ posts, category }: HomePageProps) {
+export function HomePage({ posts, category, pagination }: HomePageProps) {
   return (
     <>
       {category && <Category>Category: {category}</Category>}
@@ -34,6 +37,7 @@ export function HomePage({ posts, category }: HomePageProps) {
           />
         ))}
       </Container>
+      <Pagination {...pagination} />
     </>
   );
 }

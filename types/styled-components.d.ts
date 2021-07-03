@@ -1,4 +1,4 @@
-import { Theme as GlobalTheme } from './Theme';
+import { Theme as GlobalTheme } from '../src/styles/Theme';
 
 type Theme = typeof GlobalTheme;
 

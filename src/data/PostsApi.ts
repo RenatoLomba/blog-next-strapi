@@ -18,8 +18,9 @@ export class PostApi implements IPostApi {
     return getJson(`${AppConfig.POSTS_URL}?${query}`);
   }
 
-  async getCountPosts(): Promise<number> {
-    return getJson(`${AppConfig.POSTS_URL}/count`);
+  async getCountPosts(category?: string): Promise<number> {
+    const categoryQuery = category ? `category.name_contains=${category}` : '';
+    return getJson(`${AppConfig.POSTS_URL}/count?${categoryQuery}`);
   }
 
   async getPosts(): Promise<IPost[]> {

@@ -55,7 +55,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const postApi = new PostApi();
   const post = await postApi.getPost(context.params.slug);
 
-  if (post) post.content = await markdownToHtml(post.content);
+  if (!post)
+    return {
+      notFound: true,
+    };
+
+  post.content = await markdownToHtml(post.content);
 
   return {
     props: { post },

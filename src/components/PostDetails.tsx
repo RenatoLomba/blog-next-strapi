@@ -29,7 +29,7 @@ export function PostDetails({ date, author, category }: PostDetailsProps) {
       Publicado em <PostDate>{formattedDate}</PostDate> por{' '}
       {authorDesc[1] ? `${authorDesc[1]}, ${authorDesc[0]}` : authorDesc[0]}
       &nbsp;|{' '}
-      <Link href={`/categories/${category.toLowerCase()}`}>
+      <Link href={`/post/page/1/${category.toLowerCase()}`}>
         <a>{category}</a>
       </Link>
     </DetailsContainer>
